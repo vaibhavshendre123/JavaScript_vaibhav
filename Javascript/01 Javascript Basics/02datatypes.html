@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variables and Data Types</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #333; }
+        .container { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        h1 { color: #4a90d9; text-align: center; }
+        .example { background: #f5f5f5; padding: 10px; margin: 10px 0; border-left: 4px solid #4a90d9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Data Types</h1>
+        <script>
+            let studentName = "Amit Kumar";
+            console.log("Student:", studentName);
+            
+            studentName = "Rahul Sharma";
+            console.log("Updated:", studentName);
+            
+            var university = "MIT";
+            university = "Stanford University";
+            console.log("University:", university);
+            
+            const GRAVITY = 9.8;
+            console.log("Gravity:", GRAVITY);
+            
+            let marks = [92, 85, 78, 88, 95];
+            console.log("Marks Array:", marks);
+            
+            let message = 'Programming';
+            console.log("Original:", message);
+            
+            let temperature = 25.5;
+            const boilingPoint = 100;
+            console.log("Temperature:", temperature, "Boiling:", boilingPoint);
+            
+            let firstName = "John";
+            let lastName = "Doe";
+            console.log("Full Name:", firstName + lastName);
+            console.log("Formatted:", firstName, lastName);
+            
+            let hasLicense = true;
+            console.log("Has License:", hasLicense);
+            
+            let isWorking = false;
+            console.log("Working Status:", isWorking);
+            
+            let uninitialized;
+            console.log("Undefined Variable:", uninitialized);
+            
+            let emptyValue = null;
+            console.log("Null Value:", emptyValue);
+            
+            console.log("Total Variables Declared: 12");
+        </script>
+        <div class="example">
+            <p><strong>Summary:</strong> JavaScript has primitive types: String, Number, Boolean, undefined, null</p>
+        </div>
+    </div>
+</body>
+</html>
