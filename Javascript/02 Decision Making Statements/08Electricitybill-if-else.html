@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Power Consumption Bill</title>
+    <style>
+        body { font-family: 'Helvetica', sans-serif; background: #2c3e50; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .utility-bill { background: #ecf0f1; padding: 45px; border-radius: 15px; text-align: center; width: 380px; box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+        h1 { color: #2c3e50; }
+        #bill-display { margin-top: 25px; font-size: 1.4em; font-weight: bold; }
+        .valid { color: #27ae60; }
+        .invalid { color: #c0392b; }
+    </style>
 </head>
 <body>
-    <h1>Electricity Bill using If</h1>
-    <script>
-        const unit = parseInt(prompt("Enter No. of Units Used: "))
-        if (unit > 0){
-            let bill = unit * 4.22;
-            document.write("Amount = ", Math.ceil(bill));
-        } else {
-            document.write("Invalid Input");
-        }
-    </script>
+    <div class="utility-bill">
+        <h1>💡 Utility Bill Calculator</h1>
+        <script>
+            const powerUnits = parseInt(prompt("Enter electricity units used this month:"));
+            const pricePerUnit = 4.22;
+            if (powerUnits > 0) {
+                const payableAmount = Math.ceil(powerUnits * pricePerUnit);
+                document.getElementById("bill-display").innerHTML = "Amount to Pay: ₹" + payableAmount;
+                document.getElementById("bill-display").className = "valid";
+            } else {
+                document.getElementById("bill-display").innerHTML = "Invalid Input! Please enter valid units.";
+                document.getElementById("bill-display").className = "invalid";
+            }
+        </script>
+        <div id="bill-display"></div>
+    </div>
 </body>
 </html>

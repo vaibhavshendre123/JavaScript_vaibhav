@@ -1,47 +1,54 @@
-// Primitive Types
-let username: string = "Shubham";
-let age: number = 21;
-let isStudent: boolean = true;
+// TypeScript Basic Types Demo
 
-// Array
-let marks: number[] = [85, 90, 78];
+// Primitive Data Types
+let developerName: string = "Vaibhav Shendre";
+let experienceYears: number = 3;
+let isEmployed: boolean = true;
 
-// Tuple
-let userInfo: [string, number] = ["Shubham", 21];
+// Array Type
+let programmingLanguages: string[] = ["JavaScript", "TypeScript", "Python", "Java"];
 
-// Enum
-enum Role {
-  Admin,
-  User,
-  Guest
+// Tuple Type - Fixed length array with specific types
+let employeeRecord: [string, number, string] = ["Vaibhav", 101, "Software Developer"];
+
+// Enumeration - Named constants
+enum EmploymentType {
+    FullTime = "FULL_TIME",
+    PartTime = "PART_TIME",
+    Contract = "CONTRACT",
+    Intern = "INTERN"
 }
 
-let userRole: Role = Role.Admin;
+let currentEmployment: EmploymentType = EmploymentType.FullTime;
 
-// Union Type
-let userId: number | string;
-userId = 101;
-userId = "A101";
+// Union Type - Multiple possible types
+let employeeId: number | string;
+employeeId = 847562;
+employeeId = "EMP847562";
 
-// Type Alias
-type User = {
-  name: string;
-  age: number;
-  isActive: boolean;
+// Custom Type Definition
+type EmployeeProfile = {
+    employeeName: string;
+    employeeId: number;
+    department: string;
+    isActive: boolean;
 };
 
-let user1: User = {
-  name: "Shubham",
-  age: 21,
-  isActive: true
+let profileData: EmployeeProfile = {
+    employeeName: "Vaibhav Shendre",
+    employeeId: 847562,
+    department: "Development",
+    isActive: true
 };
 
-// Output
-console.log("Username:", username);
-console.log("Age:", age);
-console.log("Student:", isStudent);
-console.log("Marks:", marks);
-console.log("User Info:", userInfo);
-console.log("Role:", Role[userRole]);
-console.log("User ID:", userId);
-console.log("User Object:", user1);
+// Display all values
+console.log("===== Employee Information System =====");
+console.log("Developer Name:", developerName);
+console.log("Years of Experience:", experienceYears);
+console.log("Currently Employed:", isEmployed);
+console.log("Programming Languages:", programmingLanguages);
+console.log("Employee Record:", employeeRecord);
+console.log("Employment Type:", EmploymentType[currentEmployment]);
+console.log("Employee ID:", employeeId);
+console.log("Employee Profile:", profileData);
+console.log("=========================================");

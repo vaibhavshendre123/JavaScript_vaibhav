@@ -3,22 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Department Selection - Dropdown Event</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .dropdown-demo { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.25); width: 380px; text-align: center; }
+        h1 { color: #11998e; }
+        select { width: 100%; padding: 15px; border: 3px solid #11998e; border-radius: 10px; font-size: 1.1em; cursor: pointer; background: #f8f9fa; }
+        #selectionResult { margin-top: 25px; padding: 20px; background: #e8f5e9; border-radius: 12px; font-weight: bold; color: #2e7d32; }
+    </style>
 </head>
 <body>
-    <h2>Show Alert When User Changes Option</h2>
-    
-    <h3>Select Department</h3>
-    <select onchange="showalert()">
-        <option>CSE</option>
-        <option>AIML</option>
-        <option>DS</option>
-    </select>
-
-    <script>
-        function showalert(){
-            alert("Department Changed!!!")
-        }
-    </script>
+    <div class="dropdown-demo">
+        <h1>🎓 Select Your Department</h1>
+        <select id="departmentSelect" onchange="handleSelectionChange()">
+            <option value="">-- Select Department --</option>
+            <option value="CSE">Computer Science Engineering</option>
+            <option value="AIML">Artificial Intelligence & Machine Learning</option>
+            <option value="DS">Data Science</option>
+            <option value="ECE">Electronics & Communication</option>
+        </select>
+        <div id="selectionResult">Please select a department from the dropdown</div>
+        <script>
+            function handleSelectionChange() {
+                let selectedDepartment = document.getElementById("departmentSelect").value;
+                let selectedText = document.getElementById("departmentSelect").options[document.getElementById("departmentSelect").selectedIndex].text;
+                
+                if (selectedDepartment !== "") {
+                    alert("You have selected: " + selectedText);
+                    document.getElementById("selectionResult").innerHTML = "✅ Selected: " + selectedText + " (" + selectedDepartment + ")";
+                } else {
+                    document.getElementById("selectionResult").innerHTML = "Please select a department from the dropdown";
+                }
+            }
+        </script>
+    </div>
 </body>
 </html>

@@ -3,26 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Residential Electricity Bill</title>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background: linear-gradient(45deg, #11998e, #38ef7d); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .bill-receipt { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.2); width: 420px; }
+        h1 { color: #11998e; text-align: center; }
+        .breakdown { background: #f8f9fa; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #38ef7d; }
+        #final-amount { font-size: 1.6em; font-weight: bold; color: #11998e; text-align: center; margin-top: 20px; }
+    </style>
 </head>
 <body>
-    <h1>Electricity Bill using If</h1>
-    <script>
-        const unit = parseInt(prompt("Enter No. of Units Used: "))
-        if (unit > 0 && unit <= 100){
-            let bill = unit * 4.22;
-            document.write("Amount = ", Math.ceil(bill));
-        } else if (unit > 100){
-            const first_100 = 100 * 4.22;
-            const remaining = (unit - 100) * 5.02;
-            document.write("Amount for first 100: ", Math.ceil(first_100));
-            document.write("<br>");
-            document.write("Amount for remaining: ", Math.ceil(remaining));
-            document.write("<br>");
-            document.write("Amount for first 100: ", Math.ceil(first_100 + remaining));
-        } else {
-            document.write("Invalid Input")
-        }
-    </script>
+    <div class="bill-receipt">
+        <h1>🏠 Home Electricity Bill</h1>
+        <script>
+            const electricityUnits = parseInt(prompt("Enter total units consumed this month:"));
+            if (electricityUnits > 0 && electricityUnits <= 100) {
+                const baseRate = 4.22;
+                const totalBill = Math.ceil(electricityUnits * baseRate);
+                document.write('<div class="breakdown">Units: ' + electricityUnits + '<br>Rate: ₹' + baseRate + '/unit</div>');
+                document.write('<div id="final-amount">Total Payable: ₹' + totalBill + '</div>');
+            } else if (electricityUnits > 100) {
+                const first100Units = 100 * 4.22;
+                const extraUnits = electricityUnits - 100;
+                const extraCharges = extraUnits * 5.02;
+                const totalBill = Math.ceil(first100Units + extraCharges);
+                document.write('<div class="breakdown">First 100 units: ₹' + Math.ceil(first100Units) + '<br>Extra ' + extraUnits + ' units @ ₹5.02: ₹' + Math.ceil(extraCharges) + '</div>');
+                document.write('<div id="final-amount">Total Payable: ₹' + totalBill + '</div>');
+            } else {
+                document.write('<div class="breakdown" style="border-left-color: red;">Invalid input! Please enter positive number of units.</div>');
+            }
+        </script>
+    </div>
 </body>
 </html>

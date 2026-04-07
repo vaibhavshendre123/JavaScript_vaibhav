@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Age Category Classifier</title>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background: linear-gradient(to right, #667eea, #764ba2); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .wrapper { background: white; padding: 45px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center; width: 350px; }
+        h1 { color: #4a4a4a; font-size: 1.8em; margin-bottom: 10px; }
+        #status { margin-top: 30px; padding: 15px; border-radius: 8px; font-weight: bold; }
+        .adult { background: #d4edda; color: #155724; }
+        .minor { background: #f8d7da; color: #721c24; }
+        .invalid { background: #fff3cd; color: #856404; }
+    </style>
 </head>
 <body>
-    <h1>Voter If, else if, else</h1>
-    <script>
-        const age = parseInt(prompt("Enter Age: "));
-        if (age >= 18 && age <= 100){
-            document.write("You Can Vote Successfully");
-        } else if (age <= 18 && age >= 0) {
-            document.write("You Can't Vote");
-        } else {
-            document.write("Invalid Input!!!");
-        }
-    </script>
+    <div class="wrapper">
+        <h1>Age Category Classifier</h1>
+        <script>
+            const personAge = parseInt(prompt("Enter your age:"));
+            if (personAge >= 18 && personAge <= 100) {
+                document.getElementById("status").innerHTML = "You are an Adult - Eligible for voting and legal activities!";
+                document.getElementById("status").className = "adult";
+            } else if (personAge >= 0 && personAge < 18) {
+                document.getElementById("status").innerHTML = "You are a Minor - Not eligible for voting.";
+                document.getElementById("status").className = "minor";
+            } else {
+                document.getElementById("status").innerHTML = "Invalid Age - Please enter a valid age!";
+                document.getElementById("status").className = "invalid";
+            }
+        </script>
+        <div id="status"></div>
+    </div>
 </body>
 </html>

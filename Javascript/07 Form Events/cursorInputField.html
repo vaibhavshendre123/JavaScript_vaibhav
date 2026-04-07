@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursor leaves Input filed</title>
+    <title>Input Field Focus Events</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .input-demo { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); width: 400px; text-align: center; }
+        h1 { color: #1877f2; }
+        input[type="text"] { width: 100%; padding: 15px; margin: 15px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 1em; box-sizing: border-box; }
+        input[type="text"]:focus { border-color: #1877f2; outline: none; }
+        #focusStatus { padding: 15px; border-radius: 10px; font-weight: bold; margin-top: 20px; }
+        .active { background: #d4edda; color: #155724; }
+        .inactive { background: #f8d7da; color: #721c24; }
+    </style>
 </head>
 <body>
-    <h3 id="msg">Move cursor into the box</h3>
-    <input type="text" onmouseenter="enter()" onmouseleave="leave()">
-
-    <script>
-        function enter() {
-            msg.innerHTML = "Cursor entered the input field";
-        }
-        function leave() {
-            msg.innerHTML = "Cursor left the input field";
-        }
-    </script>
+    <div class="input-demo">
+        <h1>🔲 Input Focus Demo</h1>
+        <p>Move your cursor in and out of the text field</p>
+        <input type="text" id="textField" placeholder="Click and type here..." onmouseenter="handleFocus()" onmouseleave="handleBlur()">
+        <div id="focusStatus">Status: Waiting for interaction...</div>
+        <script>
+            function handleFocus() {
+                document.getElementById("focusStatus").innerHTML = "✅ Cursor entered the input field - Field is now active!";
+                document.getElementById("focusStatus").className = "active";
+            }
+            function handleBlur() {
+                document.getElementById("focusStatus").innerHTML = "❌ Cursor left the input field - Field is now inactive";
+                document.getElementById("focusStatus").className = "inactive";
+            }
+        </script>
+    </div>
 </body>
 </html>

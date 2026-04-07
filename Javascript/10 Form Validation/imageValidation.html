@@ -1,43 +1,54 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Image Validation</title>
-
-    <script>
-      function validateForm() {
-        var image = document.getElementById("image").value;
-        var result = document.getElementById("result");
-
-        if (image == "") {
-          result.innerHTML = "Please select an image";
-          result.style.color = "red";
-          return false;
-        }
-
-        var allowed = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-        if (!allowed.exec(image)) {
-          result.innerHTML = "Only image files allowed (jpg, jpeg, png, gif)";
-          result.style.color = "red";
-          return false;
-        }
-
-        result.innerHTML = "Image file is valid";
-        result.style.color = "green";
-        return false;
-      }
-    </script>
-  </head>
-  <body>
-    <h2>Image Validation</h2>
-
-    <form onsubmit="return validateForm();">
-      Choose File:
-      <input type="file" id="image" /><br /><br />
-
-      <p id="result"></p>
-
-      <input type="submit" value="Submit" />
-    </form>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image File Upload Validator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .upload-form { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.3); width: 420px; }
+        h1 { color: #4facfe; text-align: center; }
+        label { font-weight: bold; color: #333; display: block; margin-bottom: 10px; }
+        input[type="file"] { width: 100%; padding: 15px; margin: 15px 0; border: 2px dashed #4facfe; border-radius: 10px; background: #f0f9ff; }
+        input[type="submit"] { width: 100%; padding: 15px; background: #4facfe; color: white; border: none; border-radius: 10px; font-size: 1.1em; cursor: pointer; margin-top: 10px; }
+        input[type="submit"]:hover { background: #3d8bdb; }
+        #fileValidationResult { margin-top: 20px; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; display: none; }
+        .success { background: #d4edda; color: #155724; display: block !important; }
+        .error { background: #f8d7da; color: #721c24; display: block !important; }
+    </style>
+</head>
+<body>
+    <div class="upload-form">
+        <h1>🖼️ Image Upload Validator</h1>
+        <form onsubmit="return validateImageFile();">
+            <label>Select an image file to upload:</label>
+            <input type="file" id="imageFile" accept="image/*">
+            <input type="submit" value="Upload Image">
+        </form>
+        <div id="fileValidationResult"></div>
+        <script>
+            function validateImageFile() {
+                let selectedFile = document.getElementById("imageFile").value;
+                let resultDisplay = document.getElementById("fileValidationResult");
+                let validExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
+                
+                if (selectedFile === "") {
+                    resultDisplay.innerHTML = "⚠️ No file selected! Please choose an image file.";
+                    resultDisplay.className = "error";
+                    return false;
+                }
+                
+                if (!validExtensions.exec(selectedFile)) {
+                    resultDisplay.innerHTML = "❌ Invalid file type! Only image files (JPG, JPEG, PNG, GIF, WEBP) are allowed.";
+                    resultDisplay.className = "error";
+                    return false;
+                }
+                
+                resultDisplay.innerHTML = "✅ Valid image file! Upload successful.";
+                resultDisplay.className = "success";
+                return false;
+            }
+        </script>
+    </div>
+</body>
 </html>

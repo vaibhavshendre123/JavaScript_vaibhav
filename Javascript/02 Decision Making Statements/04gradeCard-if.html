@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Scholarship Eligibility Check</title>
+    <style>
+        body { font-family: 'Georgia', serif; background: #fef9e7; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .scholarship-box { background: #fffbf0; padding: 40px; border-radius: 10px; border: 2px solid #f39c12; text-align: center; width: 380px; }
+        h1 { color: #d35400; }
+        #result { font-size: 1.4em; color: #27ae60; margin-top: 20px; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <h1>Grade Card using if</h1>
-    <script>
-        const percent = parseInt(prompt("Enter Your Percentage: "));
-        if (percent >= 90){
-            document.write("Grade: Outstanding")
-        }
-    </script>
+    <div class="scholarship-box">
+        <h1>Scholarship Eligibility</h1>
+        <script>
+            const studentPercentage = parseFloat(prompt("Enter your percentage to check scholarship eligibility:"));
+            if (studentPercentage >= 90) {
+                document.getElementById("result").innerHTML = "🎓 You qualify for a Full Scholarship!";
+            }
+        </script>
+        <div id="result"></div>
+    </div>
 </body>
 </html>

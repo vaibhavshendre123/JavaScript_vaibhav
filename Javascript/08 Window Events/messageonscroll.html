@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Scroll Event</title>
-<script>
-    window.onscroll = function() {
-        document.getElementById("msg").innerHTML = "Page is being scrolled!";
-    };
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Position Detector</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%); }
+        .scroll-monitor { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); position: fixed; top: 20px; right: 20px; width: 280px; }
+        h2 { color: #495057; }
+        .scroll-info { margin-top: 20px; padding: 20px; background: #e7f5ff; border-radius: 12px; font-weight: bold; color: #1971c2; }
+        .scroll-content { padding: 50px; font-size: 1.2em; color: #666; line-height: 2; }
+        .spacer { height: 1500px; }
+    </style>
 </head>
-<body style="height:2000px;">
-<h2>Scroll Down</h2>
-<p id="msg"></p>
+<body>
+    <div class="scroll-monitor">
+        <h2>📜 Scroll Monitor</h2>
+        <div class="scroll-info" id="scrollStatus">Scroll position: 0px</div>
+    </div>
+    <div class="scroll-content">
+        <h1>Scroll Down to See the Effect!</h1>
+        <p>As you scroll down the page, the scroll position will be updated in the monitor panel.</p>
+        <p>Keep scrolling to see the position change in real-time...</p>
+        <div class="spacer"></div>
+        <p>You have reached the bottom!</p>
+    </div>
+    <script>
+        window.addEventListener("scroll", function() {
+            let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            document.getElementById("scrollStatus").innerHTML = "📍 Page Scrolled: " + Math.round(currentScrollPosition) + "px";
+        });
+    </script>
 </body>
 </html>

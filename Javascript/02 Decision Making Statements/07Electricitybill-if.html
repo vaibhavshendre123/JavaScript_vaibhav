@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Electricity Bill Calculator</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #1a1a2e; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .bill-calculator { background: #16213e; padding: 40px; border-radius: 12px; color: #e94560; box-shadow: 0 10px 30px rgba(0,0,0,0.3); width: 350px; }
+        h1 { text-align: center; color: #0f3460; }
+        .result { font-size: 1.3em; margin-top: 20px; padding: 15px; background: #0f3460; border-radius: 8px; text-align: center; }
+    </style>
 </head>
 <body>
-    <h1>Electricity Bill using If</h1>
-    <script>
-        const unit = parseInt(prompt("Enter No. of Units Used: "))
-        if (unit > 0){
-            let bill = unit * 4.22;
-            document.write("Amount = ", Math.ceil(bill));
-        }
-    </script>
+    <div class="bill-calculator">
+        <h1>⚡ Electricity Bill</h1>
+        <script>
+            const consumedUnits = parseInt(prompt("Enter total electricity units consumed:"));
+            const ratePerUnit = 4.22;
+            if (consumedUnits > 0) {
+                const totalAmount = Math.ceil(consumedUnits * ratePerUnit);
+                document.write('<div class="result">Total Bill Amount: ₹' + totalAmount + '</div>');
+            }
+        </script>
+    </div>
 </body>
 </html>

@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Math Operations - Division Calculator</title>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #0d1117; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .math-tool { background: #161b22; padding: 40px; border-radius: 15px; color: #58a6ff; width: 400px; border: 1px solid #30363d; }
+        h1 { text-align: center; color: #7ee787; }
+        .output-box { margin-top: 25px; padding: 20px; border-radius: 10px; }
+        .success { background: rgba(46, 160, 67, 0.2); border: 1px solid #2ea043; }
+        .error { background: rgba(248, 81, 73, 0.2); border: 1px solid #f85149; }
+    </style>
 </head>
 <body>
-    <h2>Exception Handling</h2>
-    <script>
-        let a = parseInt(prompt("Enter No 1: "));
-        let b = parseInt(prompt("Enter No 2: "));
-        try{
-            if (b === 0) {
-                throw "Division by zero";
+    <div class="math-tool">
+        <h1>🧮 Division Calculator</h1>
+        <script>
+            let dividend = parseFloat(prompt("Enter dividend (number to be divided):"));
+            let divisor = parseFloat(prompt("Enter divisor (number to divide by):"));
+            
+            try {
+                if (divisor === 0) {
+                    throw "Error: Cannot divide by zero! Mathematical impossibility.";
+                }
+                let computedResult = dividend / divisor;
+                document.write('<div class="output-box success">Division Successful!<br>Dividend: ' + dividend + '<br>Divisor: ' + divisor + '<br>Result: ' + computedResult.toFixed(2) + '</div>');
+            } catch (errorMessage) {
+                document.write('<div class="output-box error">⚠️ ' + errorMessage + '</div>');
+            } finally {
+                document.write('<div class="output-box" style="color: #8b949e;">✅ Arithmetic operation completed</div>');
             }
-            let result = a / b;
-            document.write("Result: " + result);
-        } catch(error){
-            document.write("Error Found: " + error);
-        } finally{
-            document.write("<br>Program Executed Successfully");
-        }
-    </script>
-
+        </script>
+    </div>
 </body>
 </html>

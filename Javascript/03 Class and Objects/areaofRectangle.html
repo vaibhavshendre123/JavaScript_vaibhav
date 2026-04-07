@@ -3,39 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Geometry Calculator - Rectangle Area</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .shape-calculator { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); width: 380px; }
+        h1 { color: #667eea; text-align: center; }
+        .input-group { margin: 15px 0; }
+        label { display: block; font-weight: bold; color: #333; margin-bottom: 5px; }
+        input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        #result { margin-top: 25px; padding: 20px; background: #f0f4ff; border-radius: 10px; text-align: center; }
+    </style>
 </head>
 <body>
-    <h2>Area of Rectangle: </h2>
-    <p id = "output"></p>
-
-    <script>
-        // class
-        class ReactangleArea{
-            constructor(length, breadth){
-                this.length = length;
-                this.breadth = breadth;
+    <div class="shape-calculator">
+        <h1>📐 Rectangle Area Calculator</h1>
+        <script>
+            class RectangleCalculator {
+                constructor(length, breadth) {
+                    this.length = parseFloat(length);
+                    this.breadth = parseFloat(breadth);
+                }
+                
+                calculateArea() {
+                    this.area = this.length * this.breadth;
+                }
+                
+                showResult() {
+                    return `Length: ${this.length} units<br>Breadth: ${this.breadth} units<br><strong>Area: ${this.area} square units</strong>`;
+                }
             }
-
-            calArea(){
-                this.area = this.length * this.breadth;
-            }
-
-            display(){
-                document.getElementById("output").innerHTML = 
-                    "Length: " + this.length + "<br>" +
-                    "Breadth: " + this.breadth + "<br>" +
-                    "Area:  " + this.area;
-            }
-        }
-
-        let len = prompt("Enter Length: ");
-        let bre = prompt("Enter Breadth: ");
-
-        // object
-        let rec = new ReactangleArea(len, bre);
-        rec.calArea();
-        rec.display();
-    </script>
+            
+            let rectLength = prompt("Enter the length of the rectangle:");
+            let rectBreadth = prompt("Enter the breadth of the rectangle:");
+            
+            let geometryObj = new RectangleCalculator(rectLength, rectBreadth);
+            geometryObj.calculateArea();
+            
+            document.getElementById("result").innerHTML = geometryObj.showResult();
+        </script>
+        <div id="result"></div>
+    </div>
 </body>
 </html>

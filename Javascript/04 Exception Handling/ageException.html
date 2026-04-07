@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Exception</title>
+    <title>Voter Age Verification System</title>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .age-verification { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.3); width: 400px; text-align: center; }
+        h1 { color: #1e3c72; }
+        .status-display { margin-top: 30px; padding: 25px; border-radius: 12px; font-size: 1.3em; font-weight: bold; }
+        .approved { background: #d4edda; color: #155724; border: 3px solid #28a745; }
+        .rejected { background: #f8d7da; color: #721c24; border: 3px solid #dc3545; }
+    </style>
 </head>
 <body>
-    <h2>Exception when age is less than 18</h2>
-    <script>
-        try {
-            let age = 21;
-            if(age <18){
-                throw "Age is less than 18";
-            }else{
-                document.write("You are eligible to VOTE")
+    <div class="age-verification">
+        <h1>🗳️ Voter Eligibility Check</h1>
+        <script>
+            let citizenAge = parseInt(prompt("Enter your age to verify voting eligibility:"));
+            
+            try {
+                if (isNaN(citizenAge)) {
+                    throw "Invalid input! Please enter a valid age in numbers.";
+                }
+                if (citizenAge < 18) {
+                    throw "You are under 18 years old. Not eligible for voting.";
+                }
+                document.write('<div class="status-display approved">🎉 Congratulations! You are eligible to vote in elections!</div>');
+            } catch (errorMessage) {
+                document.write('<div class="status-display rejected">⚠️ ' + errorMessage + '</div>');
+            } finally {
+                document.write('<p style="margin-top:25px;color:#666;">System verification process completed</p>');
             }
-        } catch (error){
-            document.write("Error: " + error);
-        } finally{
-            document.write("<br>Program Executed Successfully.")
-        }
-    </script>
+        </script>
+    </div>
 </body>
 </html>

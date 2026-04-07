@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Double Click</title>
+    <title>Interactive Double Click Event</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .interactive-box { background: white; padding: 60px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); text-align: center; cursor: pointer; transition: transform 0.3s; }
+        .interactive-box:hover { transform: scale(1.05); }
+        h1 { color: #667eea; font-size: 2em; }
+    </style>
 </head>
 <body>
-    <h2 ondblclick="showalert()">Double Click this Text</h2>
-    <script>
-        function showalert(){
-            alert("Mouse Button Double Clicked!!!")
-        }
-    </script>
+    <div class="interactive-box">
+        <h1 ondblclick="triggerAction()">👆 Double Click Me!</h1>
+        <p>Double-click anywhere on this heading to see the magic</p>
+        <script>
+            let clickCount = 0;
+            function triggerAction() {
+                clickCount++;
+                alert("🎯 Double click detected!\nClick count: " + clickCount);
+            }
+        </script>
+    </div>
 </body>
 </html>

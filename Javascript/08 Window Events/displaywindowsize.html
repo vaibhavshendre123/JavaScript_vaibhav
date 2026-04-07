@@ -1,16 +1,32 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Window Resize</title>
-    <script>
-      window.onresize = function () {
-        document.getElementById("size").innerHTML =
-          "Width: " + window.innerWidth + " Height: " + window.innerHeight;
-      };
-    </script>
-  </head>
-  <body>
-    <h2>Resize the browser window</h2>
-    <p id="size"></p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Window Size Detector</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .size-display { background: white; padding: 60px; border-radius: 25px; box-shadow: 0 30px 70px rgba(0,0,0,0.3); text-align: center; width: 400px; }
+        h1 { color: #667eea; }
+        .dimensions { margin-top: 30px; padding: 25px; background: #f0f4ff; border-radius: 15px; font-size: 1.4em; font-weight: bold; color: #333; }
+        .hint { color: #666; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="size-display">
+        <h1>📏 Window Size Monitor</h1>
+        <div class="dimensions" id="dimensionsOutput">Resize your browser window to see changes</div>
+        <p class="hint">Try dragging the browser edges to resize!</p>
+        <script>
+            function updateDimensions() {
+                let viewportWidth = window.innerWidth;
+                let viewportHeight = window.innerHeight;
+                document.getElementById("dimensionsOutput").innerHTML = "Width: " + viewportWidth + "px<br>Height: " + viewportHeight + "px";
+            }
+            
+            window.addEventListener("resize", updateDimensions);
+            updateDimensions();
+        </script>
+    </div>
+</body>
 </html>

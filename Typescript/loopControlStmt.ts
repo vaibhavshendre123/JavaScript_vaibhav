@@ -1,51 +1,76 @@
-// Function
-function checkNo(num: number): string{
-    if(num>0){
-        return "Positive";
-    } else if(num <0){
-        return "Negative";
+// TypeScript Control Flow and Loops Demonstration
+
+// Function with conditional logic
+function evaluateTemperature(temperature: number): string {
+    if (temperature > 30) {
+        return "Hot - Stay hydrated!";
+    } else if (temperature >= 15 && temperature <= 30) {
+        return "Moderate - Pleasant weather";
+    } else if (temperature >= 0 && temperature < 15) {
+        return "Cold - Wear warm clothes";
     } else {
-        return "Zero";
+        return "Freezing - Stay indoors!";
     }
-} 
-console.log(checkNo(5));
-console.log(checkNo(0));
-console.log(checkNo(-8));
+}
+console.log("Temperature Check:", evaluateTemperature(25));
+console.log("Temperature Check:", evaluateTemperature(5));
+console.log("Temperature Check:", evaluateTemperature(-5));
 
-// Switch Stmt
-let day: number = 3;
-switch(day){
-    case 1: console.log("Monday");
-            break;
-    case 2: console.log("Tuesday")
-            break;
-    case 3: console.log("Wednesday");
-            break;
-    case 4: console.log("Invalid Day");
-            break;
+// Switch Statement - Day of Week
+function getDayName(dayNumber: number): string {
+    switch(dayNumber) {
+        case 1:
+            return "Sunday";
+        case 2:
+            return "Monday";
+        case 3:
+            return "Tuesday";
+        case 4:
+            return "Wednesday";
+        case 5:
+            return "Thursday";
+        case 6:
+            return "Friday";
+        case 7:
+            return "Saturday";
+        default:
+            return "Invalid day number";
+    }
+}
+console.log("Day:", getDayName(3));
+console.log("Day:", getDayName(7));
+
+// For Loop - Print multiplication table
+console.log("=== Multiplication Table of 5 ===");
+for (let multiplier: number = 1; multiplier <= 5; multiplier++) {
+    console.log(`5 x ${multiplier} = ${5 * multiplier}`);
 }
 
-// For loop
-for(let i:number = 1; i <=5; i++){
-    console.log("For Loop: ", i);
+// While Loop - Countdown
+console.log("=== Countdown Timer ===");
+let countdown: number = 3;
+while (countdown > 0) {
+    console.log(`T-minus ${countdown}...`);
+    countdown--;
 }
+console.log("Liftoff! 🚀");
 
-// While Loop
-let count: number = 1;
-while(count <=3){
-    console.log("While Loop: ", count);
-    count++;
-}
+// Do-While Loop - Execute at least once
+console.log("=== Random Number Generator ===");
+let randomNumber: number = 1;
+do {
+    console.log("Generated number:", randomNumber);
+    randomNumber += Math.floor(Math.random() * 5) + 1;
+} while (randomNumber <= 10);
 
-// Do While loop
-let num: number = 1;
-do{
-    console.log("Do-While Loop: ", num);
-    num++;
-} while (num <=2);
+// Arrow Function - Calculate area
+const calculateRectangleArea = (width: number, height: number): number => {
+    return width * height;
+};
+console.log("Rectangle Area (5x8):", calculateRectangleArea(5, 8));
 
-// Arrow Function
-const add = (a: number, b:number): number => {
-    return a+b;
-}
-console.log("Addition: ", add(10, 20));
+// Arrow Function - Simple greeting
+const greetUser = (userName: string): string => {
+    return `Welcome, ${userName}! Happy to have you here.`;
+};
+console.log(greetUser("Vaibhav"));

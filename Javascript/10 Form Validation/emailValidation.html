@@ -1,32 +1,53 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Email Validation</title>
-    <script>
-      function validateEmail() {
-        var email = document.getElementById("email").value;
-        var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-        if (email == "") {
-          alert("Email cannot be empty");
-          return false;
-        }
-
-        if (!email.match(pattern)) {
-          alert("Enter valid email (example: name@gmail.com)");
-          return false;
-        }
-
-        alert("Valid Email");
-        return true;
-      }
-    </script>
-  </head>
-  <body>
-    <form onsubmit="return validateEmail();">
-      Enter Email:
-      <input type="text" id="email" />
-      <input type="submit" value="Submit" />
-    </form>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Address Validation</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .validation-card { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.3); width: 400px; }
+        h1 { color: #667eea; text-align: center; }
+        input[type="text"] { width: 100%; padding: 15px; margin: 15px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 1em; box-sizing: border-box; }
+        input[type="submit"] { width: 100%; padding: 15px; background: #667eea; color: white; border: none; border-radius: 10px; font-size: 1.1em; cursor: pointer; transition: background 0.3s; }
+        input[type="submit"]:hover { background: #5568d3; }
+        #emailMessage { margin-top: 20px; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; display: none; }
+        .success { background: #d4edda; color: #155724; display: block !important; }
+        .error { background: #f8d7da; color: #721c24; display: block !important; }
+    </style>
+</head>
+<body>
+    <div class="validation-card">
+        <h1>📧 Email Validator</h1>
+        <form onsubmit="return validateEmailAddress();">
+            <label>Enter your email address:</label>
+            <input type="text" id="userEmail" placeholder="example@domain.com">
+            <input type="submit" value="Validate Email">
+        </form>
+        <div id="emailMessage"></div>
+        <script>
+            function validateEmailAddress() {
+                let emailInput = document.getElementById("userEmail").value;
+                let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                let messageBox = document.getElementById("emailMessage");
+                
+                if (emailInput.trim() === "") {
+                    messageBox.innerHTML = "⚠️ Email field cannot be empty!";
+                    messageBox.className = "error";
+                    return false;
+                }
+                
+                if (!emailPattern.test(emailInput)) {
+                    messageBox.innerHTML = "❌ Invalid email format! Please enter a valid email (e.g., name@gmail.com)";
+                    messageBox.className = "error";
+                    return false;
+                }
+                
+                messageBox.innerHTML = "✅ Valid email address! Registration successful.";
+                messageBox.className = "success";
+                return true;
+            }
+        </script>
+    </div>
+</body>
 </html>

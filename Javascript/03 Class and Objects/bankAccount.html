@@ -3,42 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Online Banking - Account Management</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #1e3c72; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .banking-interface { background: linear-gradient(180deg, #2a5298 0%, #1e3c72 100%); padding: 45px; border-radius: 20px; color: white; width: 400px; box-shadow: 0 25px 50px rgba(0,0,0,0.4); }
+        h1 { text-align: center; margin-bottom: 30px; }
+        .account-info { background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; margin: 15px 0; }
+        .info-row { display: flex; justify-content: space-between; margin: 10px 0; font-size: 1.1em; }
+        .balance { font-size: 1.8em; text-align: center; color: #4ade80; margin-top: 20px; }
+    </style>
 </head>
 <body>
-    <h2>Bank Account Details</h2>
-    <p id = "output"></p>
-
-    <script>
-        // class
-        class BankAccount{
-            constructor(name, accNo, balance){
-                this.name = name;
-                this.accNo = accNo;
-                this.balance = balance;
+    <div class="banking-interface">
+        <h1>🏦 Digital Banking Portal</h1>
+        <script>
+            class AccountManager {
+                constructor(accountHolder, accountNumber, initialBalance) {
+                    this.accountHolder = accountHolder;
+                    this.accountNumber = accountNumber;
+                    this.currentBalance = initialBalance;
+                }
+                
+                creditFunds(amount) {
+                    this.currentBalance += amount;
+                    return `Deposited ₹${amount}. New Balance: ₹${this.currentBalance}`;
+                }
+                
+                debitFunds(amount) {
+                    if (amount > this.currentBalance) {
+                        return "Insufficient funds!";
+                    }
+                    this.currentBalance -= amount;
+                    return `Withdrawn ₹${amount}. Remaining Balance: ₹${this.currentBalance}`;
+                }
+                
+                generateStatement() {
+                    return `<div class="account-info">
+                        <div class="info-row"><span>Account Holder:</span><span>${this.accountHolder}</span></div>
+                        <div class="info-row"><span>Account Number:</span><span>${this.accountNumber}</span></div>
+                        <div class="balance">Current Balance: ₹${this.currentBalance}</div>
+                    </div>`;
+                }
             }
-
-            deposit(amount){
-                this.balance = this.balance + amount;
-            }
-
-            withdraw(amount){
-                this.balance = this.balance - amount;
-            }
-
-            display(){
-                document.getElementById("output").innerHTML = 
-                    "Account Holder Name: " + this.name + "<br>" +
-                    "Account Number: " + this.accNo + "<br>" +
-                    "Balance: Rs. " + this.balance;
-            }
-        }
-
-        // object
-        let account = new BankAccount("Shubham Pattewar", 562341, 5000)
-        account.deposit(3000);
-        account.withdraw(4000);
-        account.display();
-    </script>
+            
+            let userAccount = new AccountManager("Vaibhav Shendre", 8475629103, 5000);
+            
+            let depositAmount = 3000;
+            let withdrawalAmount = 4000;
+            
+            document.write(userAccount.generateStatement());
+            document.write("<br><p>" + userAccount.creditFunds(depositAmount) + "</p>");
+            document.write("<p>" + userAccount.debitFunds(withdrawalAmount) + "</p>");
+        </script>
+    </div>
 </body>
 </html>

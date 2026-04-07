@@ -3,35 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student Information System</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .student-portal { background: white; padding: 50px; border-radius: 25px; box-shadow: 0 30px 60px rgba(0,0,0,0.2); width: 420px; }
+        h1 { color: #667eea; text-align: center; }
+        .profile-card { background: #f8f9ff; padding: 25px; border-radius: 15px; margin-top: 25px; border-left: 5px solid #667eea; }
+        .field { margin: 12px 0; font-size: 1.1em; }
+        .field-label { font-weight: bold; color: #555; }
+        .field-value { color: #333; }
+    </style>
 </head>
 <body>
-    <script>
-    class Student {
-        constructor(name, rollNo, course, marks) {
-            this.name = name;
-            this.rollNo = rollNo;
-            this.course = course;
-            this.marks = marks;
-        }
-
-        displayDetails() {
-            document.write("<h3>Student Details</h3>");
-            document.write("Name: " + this.name + "<br>");
-            document.write("Roll No: " + this.rollNo + "<br>");
-            document.write("Course: " + this.course + "<br>");
-            document.write("Marks: " + this.marks + "<br>");
-        }
-    }
-
-    let name = prompt("Enter Student Name:");
-    let rollNo = prompt("Enter Roll Number:");
-    let course = prompt("Enter Course:");
-    let marks = prompt("Enter Marks:");
-
-    let student1 = new Student(name, rollNo, course, marks);
-
-    student1.displayDetails();
-</script>
+    <div class="student-portal">
+        <h1>🎓 Student Profile</h1>
+        <script>
+            class StudentRecord {
+                constructor(studentName, studentRoll, enrolledCourse, obtainedMarks) {
+                    this.studentName = studentName;
+                    this.studentRoll = parseInt(studentRoll);
+                    this.enrolledCourse = enrolledCourse;
+                    this.obtainedMarks = parseFloat(obtainedMarks);
+                }
+                
+                generateProfile() {
+                    return `<div class="profile-card">
+                        <div class="field"><span class="field-label">Name:</span> <span class="field-value">${this.studentName}</span></div>
+                        <div class="field"><span class="field-label">Roll Number:</span> <span class="field-value">${this.studentRoll}</span></div>
+                        <div class="field"><span class="field-label">Course:</span> <span class="field-value">${this.enrolledCourse}</span></div>
+                        <div class="field"><span class="field-label">Marks:</span> <span class="field-value">${this.obtainedMarks}</span></div>
+                    </div>`;
+                }
+            }
+            
+            let nameInput = prompt("Enter Student Name:");
+            let rollInput = prompt("Enter Roll Number:");
+            let courseInput = prompt("Enter Course Name:");
+            let marksInput = prompt("Enter Marks Obtained:");
+            
+            let studentData = new StudentRecord(nameInput, rollInput, courseInput, marksInput);
+            document.write(studentData.generateProfile());
+        </script>
+    </div>
 </body>
 </html>

@@ -3,27 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Academic Performance Report</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .report-card { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); text-align: center; width: 400px; }
+        h1 { color: #2c3e50; }
+        #grade-output { font-size: 1.8em; margin-top: 30px; padding: 20px; border-radius: 10px; font-weight: bold; }
+        .grade-o { background: #ffd700; color: #856404; }
+        .grade-aplus { background: #2ecc71; color: white; }
+        .grade-a { background: #3498db; color: white; }
+        .grade-bplus { background: #9b59b6; color: white; }
+        .grade-b { background: #e67e22; color: white; }
+        .grade-c { background: #95a5a6; color: white; }
+        .grade-f { background: #e74c3c; color: white; }
+    </style>
 </head>
 <body>
-    <h1>Grade Card using if, elif ladder</h1>
-    <script>
-        const percent = parseInt(prompt("Enter Your Percentage: "));
-        if (percent >= 90){
-            document.write("Grade: O");
-        } else if (percent >= 80) {
-            document.write("Grade: A+");
-        } else if (percent >= 70) {
-            document.write("Grade: A");
-        } else if (percent >= 60){
-            document.write("Grade: B+")
-        } else if (percent >= 50){
-            document.write("Grade: B")
-        } else if (percent >= 40){
-            document.write("Grade: C")
-        } else {
-            document.write("Grade: Fail")
-        }
-    </script>
+    <div class="report-card">
+        <h1>Student Grade Report</h1>
+        <script>
+            const marks = parseFloat(prompt("Enter your percentage marks (0-100):"));
+            if (marks >= 90) {
+                document.getElementById("grade-output").innerHTML = "Grade: O (Outstanding)";
+                document.getElementById("grade-output").className = "grade-o";
+            } else if (marks >= 80) {
+                document.getElementById("grade-output").innerHTML = "Grade: A+ (Excellent)";
+                document.getElementById("grade-output").className = "grade-aplus";
+            } else if (marks >= 70) {
+                document.getElementById("grade-output").innerHTML = "Grade: A (Very Good)";
+                document.getElementById("grade-output").className = "grade-a";
+            } else if (marks >= 60) {
+                document.getElementById("grade-output").innerHTML = "Grade: B+ (Good)";
+                document.getElementById("grade-output").className = "grade-bplus";
+            } else if (marks >= 50) {
+                document.getElementById("grade-output").innerHTML = "Grade: B (Above Average)";
+                document.getElementById("grade-output").className = "grade-b";
+            } else if (marks >= 40) {
+                document.getElementById("grade-output").innerHTML = "Grade: C (Average)";
+                document.getElementById("grade-output").className = "grade-c";
+            } else {
+                document.getElementById("grade-output").innerHTML = "Grade: F (Failed - Better luck next time!)";
+                document.getElementById("grade-output").className = "grade-f";
+            }
+        </script>
+        <div id="grade-output"></div>
+    </div>
 </body>
 </html>

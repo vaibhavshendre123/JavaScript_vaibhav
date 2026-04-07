@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pass/Fail Evaluation</title>
+    <style>
+        body { font-family: 'Verdana', sans-serif; background: #e8f6f3; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .exam-result { background: white; padding: 45px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; width: 360px; }
+        h1 { color: #16a085; }
+        #outcome { font-size: 1.5em; margin-top: 25px; font-weight: bold; }
+        .pass { color: #27ae60; }
+        .fail { color: #c0392b; }
+    </style>
 </head>
 <body>
-    <h1>Grade Card using if</h1>
-    <script>
-        const percent = parseInt(prompt("Enter Your Percentage: "));
-        if (percent >= 40){
-            document.write("Grade: Pass");
-        } else {
-            document.write("Grade: Fail");
-        }
-    </script>
+    <div class="exam-result">
+        <h1>Exam Result Checker</h1>
+        <script>
+            const examScore = parseInt(prompt("Enter your exam score (out of 100):"));
+            if (examScore >= 40) {
+                document.getElementById("outcome").innerHTML = "Congratulations! You PASSED the exam!";
+                document.getElementById("outcome").className = "pass";
+            } else {
+                document.getElementById("outcome").innerHTML = "Sorry! You did not pass. Better luck next time!";
+                document.getElementById("outcome").className = "fail";
+            }
+        </script>
+        <div id="outcome"></div>
+    </div>
 </body>
 </html>
